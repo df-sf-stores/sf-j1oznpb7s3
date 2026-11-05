@@ -1,5 +1,8 @@
 import { Image, Link, MerchantImage, useCollections, useProducts, useStorefront } from '@dripfunnel/storefront-core/theme'
 import { Layout } from '../components/Layout'
+import { ProductCarousel } from '../components/interactive/ProductCarousel'
+import { SareeCarousel } from '../components/interactive/SareeCarousel'
+import { Reveal } from '../components/interactive/Reveal'
 import { GridPlaceholder, ProductGrid } from '../components/ProductCard'
 import shop from '../styles/shop.module.css'
 import styles from '../styles/home.module.css'
@@ -39,6 +42,15 @@ export const HomePage = () => {
           </Link>
         </div>
       </section>
+      <section className={styles.featured}>
+        <div className={styles.featuredHead}>
+          <h2 className={shop.heading}>{t('home.featured.title')}</h2>
+          <Link href="/collections/all/?sort=newest" className={shop.textLink}>
+            {t('home.featured.all')}
+          </Link>
+        </div>
+        <SareeCarousel />
+      </section>
       <section className={styles.signup}>
         <h2 className={styles.heading}>{t('home.signup.title')}</h2>
         <p className={styles.body}>{t('home.signup.body')}</p>
@@ -47,7 +59,8 @@ export const HomePage = () => {
         </Link>
       </section>
       {status === 'loading' || collections.length ? (
-        <section className={shop.band}>
+        <Reveal>
+          <section className={shop.band}>
           <h2 className={shop.heading}>{t('home.collections.title')}</h2>
           {status === 'loading' ? (
             <ul className={styles.tiles} aria-busy="true" aria-label={t('shop.listing.loading')}>
@@ -70,9 +83,11 @@ export const HomePage = () => {
             </ul>
           )}
         </section>
+        </Reveal>
       ) : null}
       {newest.status === 'loading' || newest.products.length ? (
-        <section className={shop.band}>
+        <Reveal>
+          <section className={shop.band}>
           <div className={shop.bandHead}>
             <h2 className={shop.heading}>{t('home.newest.title')}</h2>
             <Link href="/collections/all/?sort=newest" className={shop.textLink}>
@@ -81,6 +96,7 @@ export const HomePage = () => {
           </div>
           {newest.status === 'loading' ? <GridPlaceholder label={t('shop.listing.loading')} count={4} /> : <ProductGrid products={newest.products} />}
         </section>
+        </Reveal>
       ) : null}
     </Layout>
   )

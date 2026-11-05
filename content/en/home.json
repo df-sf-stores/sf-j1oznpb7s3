@@ -22,6 +22,17 @@
   "collections": {
     "title": "Shop by collection"
   },
+  "featured": {
+    "label": "Featured products",
+    "title": "Featured Sarees",
+    "all": "See all",
+    "one": { "dot": "Show the first product" },
+    "two": { "dot": "Show the second product" },
+    "three": { "dot": "Show the third product" },
+    "four": { "dot": "Show the fourth product" },
+    "five": { "dot": "Show the fifth product" },
+    "six": { "dot": "Show the sixth product" }
+  },
   "newest": {
     "title": "New in",
     "all": "See all"

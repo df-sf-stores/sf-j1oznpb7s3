@@ -1,0 +1,206 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  opacity: 0.5;
+  transition: opacity 300ms;
+}
+
+.cardActive {
+  opacity: 1;
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.cardLink:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.cardPicture {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  background: var(--picture-alt);
+}
+
+.cardImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms;
+}
+
+.cardLink:hover .cardImage {
+  transform: scale(1.03);
+}
+
+.noPicture {
+  position: absolute;
+  inset: auto 10px 10px;
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.cardName {
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: 15px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.cardPrice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px;
+  margin: 0;
+  font-size: 15px;
+}
+
+.from {
+  font-weight: 600;
+}
+
+.price {
+  display: inline-block;
+  --df-price-size: 15px;
+  --df-sealed-size: 12px;
+}
+
+.price::part(amount) {
+  font-weight: 700;
+}
+
+.price::part(was) {
+  margin-left: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.price::part(tax) {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.arrow {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--button-radius);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 300ms, border-color 300ms;
+  flex-shrink: 0;
+}
+
+.arrow:hover {
+  background: var(--soft);
+  border-color: var(--ink-soft);
+}
+
+.arrow:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.arrowIcon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.dot {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 300ms, transform 300ms;
+  font-size: 0;
+}
+
+.dot::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+  opacity: 0.5;
+  transition: opacity 300ms;
+}
+
+.dotActive {
+  background: var(--accent);
+  transform: scale(1.15);
+}
+
+.dotActive::after {
+  background: var(--accent-ink);
+  opacity: 1;
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
